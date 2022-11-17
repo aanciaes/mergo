@@ -1,9 +1,10 @@
 package mergo_test
 
 import (
-	"github.com/imdario/mergo"
 	"reflect"
 	"testing"
+
+	"github.com/aanciaes/mergo"
 )
 
 type structWithStringMap struct {

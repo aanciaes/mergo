@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/imdario/mergo"
+	"github.com/aanciaes/mergo"
 )
 
 type structWithoutTimePointer struct {

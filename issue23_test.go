@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/imdario/mergo"
+	"github.com/aanciaes/mergo"
 )
 
 type document struct {
@@ -25,7 +25,7 @@ func TestIssue23MergeWithOverwrite(t *testing.T) {
 		t.Errorf("Error while merging %s", err)
 	}
 
-	if !dst.Created.Equal(*src.Created) { //--> https://golang.org/pkg/time/#pkg-overview
+	if !dst.Created.Equal(*src.Created) { // --> https://golang.org/pkg/time/#pkg-overview
 		t.Errorf("Created not merged in properly: dst.Created(%v) != src.Created(%v)", dst.Created, src.Created)
 	}
 }

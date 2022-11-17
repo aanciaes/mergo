@@ -46,6 +46,7 @@ type Config struct {
 	overwriteSliceWithEmptyValue bool
 	sliceDeepCopy                bool
 	debug                        bool
+	skipNil                      bool
 }
 
 type Transformers interface {
@@ -63,6 +64,9 @@ func deepMerge(dst, src reflect.Value, visited map[uintptr]*visit, depth int, co
 	sliceDeepCopy := config.sliceDeepCopy
 
 	if !src.IsValid() {
+		return
+	}
+	if config.skipNil && isReflectNil(src) {
 		return
 	}
 	if dst.CanAddr() {
@@ -340,6 +344,11 @@ func WithTypeCheck(config *Config) {
 func WithSliceDeepCopy(config *Config) {
 	config.sliceDeepCopy = true
 	config.Overwrite = true
+}
+
+// WithIgnoreNils will ignore any nil value on the source struct
+func WithIgnoreNils(config *Config) {
+	config.skipNil = true
 }
 
 func merge(dst, src interface{}, opts ...func(*Config)) error {

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/imdario/mergo"
+	"github.com/aanciaes/mergo"
 )
 
 const issue138configuration string = `
